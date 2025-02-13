@@ -1,0 +1,38 @@
+{% extends 'recipes/base.html' %}
+{% load static %}
+
+
+{% block title %}Главная - Рецепты{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Новые рецепты</h2>
+
+    <div class="row">
+        {% for recipe in recipes %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-lg border-0 rounded-4">
+                <img src="{% if recipe.image %}{{ recipe.image.url }}{% else %}{% static 'images/default.jpg' %}{% endif %}"
+                     class="card-img-top rounded-top-4" alt="{{ recipe.title }}"
+                     style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ recipe.title }}</h5>
+                    <p class="card-text text-muted">⏳ {{ recipe.cooking_time }} мин.</p>
+                    <a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-primary w-100">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">Пока нет рецептов...</p>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'add_recipe' %}" class="btn btn-success">Добавить рецепт</a>
+    </div>
+</div>
+{% endblock %}
+
+
+<img src="{% if recipe.image %}{{ recipe.image.url }}{% else %}{% static 'images/default.jpg' %}{% endif %}"
+                     class="card-img-top rounded-top-4" alt="{{ recipe.title }}"

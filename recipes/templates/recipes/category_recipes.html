@@ -1,0 +1,22 @@
+{% extends 'recipes/base.html' %}
+
+{% block title %}Рецепты категории {{ category.name }}{% endblock %}
+
+{% block content %}
+    <h2>Рецепты в категории: {{ category.name }}</h2>
+
+    {% if recipes %}
+        <ul>
+            {% for recipe in recipes %}
+                <li>
+                    <a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a>
+                    - Время приготовления: {{ recipe.cooking_time }} минут
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>В этой категории пока нет рецептов.</p>
+    {% endif %}
+
+    <a href="{% url 'home' %}" class="btn btn-secondary">Вернуться на главную</a>
+{% endblock %}

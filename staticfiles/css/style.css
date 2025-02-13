@@ -1,0 +1,151 @@
+/* Общие стили */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Контейнер */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/* Навигационное меню */
+.navbar {
+    background-color: #343a40;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #ffc107;
+}
+
+/* Заголовки */
+h1, h2, h3, h4, h5 {
+    color: #343a40;
+}
+
+/* Контейнер карточек рецептов */
+.recipes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Центрирование нижнего ряда */
+    gap: 20px;
+}
+
+/* Карточка рецепта */
+.recipe-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 calc(33.333% - 20px); /* 3 карточки в ряд */
+    max-width: calc(33.333% - 20px);
+    min-width: 280px; /* Минимальная ширина карточки */
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.recipe-card .card-body {
+    padding: 15px;
+}
+
+.recipe-card h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #212529;
+}
+
+.recipe-card p {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* Адаптивное центрирование карточек */
+@media (max-width: 992px) {
+    .recipe-card {
+        flex: 1 1 calc(50% - 20px); /* 2 карточки в ряд */
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 600px) {
+    .recipe-card {
+        flex: 1 1 100%; /* 1 карточка в ряд */
+        max-width: 100%;
+    }
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Футер */
+.footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #343a40;
+    color: white;
+    margin-top: 20px;
+}

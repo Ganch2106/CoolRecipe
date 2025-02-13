@@ -1,0 +1,40 @@
+{% extends 'recipes/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="recipe-detail-card">
+        <img class="recipe-image"
+             src="{% if recipe.image %}{{ recipe.image.url }}{% else %}{% static 'images/default.jpg' %}{% endif %}"
+             alt="{{ recipe.title }}">
+        <div class="recipe-info">
+            <h2 class="recipe-title">{{ recipe.title }}</h2>
+            <p class="text-muted">Автор: {{ recipe.author }}</p>
+            <p class="text-muted">⏳ Время приготовления: {{ recipe.cooking_time }} мин</p>
+
+            <h4>Описание</h4>
+            <p>{{ recipe.description }}</p>
+
+            <h4>Шаги приготовления</h4>
+            <p>{{ recipe.steps }}</p>
+
+            {% if recipe.ingredients.all %}
+            <h4>Ингредиенты</h4>
+            <ul>
+                {% for ingredient in recipe.ingredients.all %}
+                <li>{{ ingredient.name }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% if user == recipe.author %}
+            <div class="recipe-actions">
+                <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-warning">✏ Редактировать</a>
+                <a href="{% url 'delete_recipe' recipe.id %}" class="btn btn-danger">🗑 Удалить</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
