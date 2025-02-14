@@ -6,11 +6,12 @@
 <div class="container">
     <div class="recipe-detail-card">
         <img class="recipe-image"
-             src="{% if recipe.image %}{{ recipe.image.url }}{% else %}{% static 'images/default.jpg' %}{% endif %}"
+             src="{{ recipe.image.url|default:'/static/images/default.jpg' }}" alt="{{ recipe.title }}" >
              alt="{{ recipe.title }}">
         <div class="recipe-info">
             <h2 class="recipe-title">{{ recipe.title }}</h2>
             <p class="text-muted">Автор: {{ recipe.author }}</p>
+            <p class="category">Категория: {{ recipe.category }}</p>
             <p class="text-muted">⏳ Время приготовления: {{ recipe.cooking_time }} мин</p>
 
             <h4>Описание</h4>
