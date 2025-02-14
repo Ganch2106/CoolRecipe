@@ -5,9 +5,13 @@
 {% block content %}
 <div class="container">
     <div class="recipe-detail-card">
-        <img class="recipe-image"
-             src="{{ recipe.image.url|default:'/static/images/default.jpg' }}" alt="{{ recipe.title }}" >
-             alt="{{ recipe.title }}">
+
+        {% if recipe.image %}
+        <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+        {% else %}
+        <img src="{% static 'images/default.jpg' %}" alt="Нет изображения">
+        {% endif %}
+
         <div class="recipe-info">
             <h2 class="recipe-title">{{ recipe.title }}</h2>
             <p class="text-muted">Автор: {{ recipe.author }}</p>
