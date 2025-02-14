@@ -1,31 +1,31 @@
 {% extends 'recipes/base.html' %}
-
 {% load static %}
 
 {% block content %}
 <div class="container">
-    <div class="recipe-detail-card">
-
-        {% if recipe.image %}
-        <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
-        {% else %}
-        <img src="{% static 'images/default.jpg' %}" alt="Нет изображения">
-        {% endif %}
+    <div class="recipe-detail">
+        <div class="recipe-image">
+            {% if recipe.image %}
+            <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+            {% else %}
+            <img src="{% static 'images/default.jpg' %}" alt="Нет изображения">
+            {% endif %}
+        </div>
 
         <div class="recipe-info">
             <h2 class="recipe-title">{{ recipe.title }}</h2>
-            <p class="text-muted">Автор: {{ recipe.author }}</p>
-            <p class="category">Категория: {{ recipe.category }}</p>
-            <p class="text-muted">⏳ Время приготовления: {{ recipe.cooking_time }} мин</p>
+            <p class="text-muted"><strong>Автор:</strong> {{ recipe.author }}</p>
+            <p class="category"><strong>Категория:</strong> {{ recipe.category }}</p>
+            <p class="text-muted"><strong>⏳ Время приготовления:</strong> {{ recipe.cooking_time }} мин</p>
 
-            <h4>Описание</h4>
+            <h3>Описание</h3>
             <p>{{ recipe.description }}</p>
 
-            <h4>Шаги приготовления</h4>
+            <h3>Шаги приготовления</h3>
             <p>{{ recipe.steps }}</p>
 
             {% if recipe.ingredients.all %}
-            <h4>Ингредиенты</h4>
+            <h3>Ингредиенты</h3>
             <ul>
                 {% for ingredient in recipe.ingredients.all %}
                 <li>{{ ingredient.name }}</li>
@@ -43,3 +43,4 @@
     </div>
 </div>
 {% endblock %}
+
